@@ -3,7 +3,7 @@ const path = require('path');
 const levelup = require('levelup');
 const leveldown = require('leveldown');
 
-const EventHandler = require("./commands/admin/EventHandler.js");
+const EventHandler = require("./commands/Admin/EventHandler.js");
 
 const client = new Commando.Client({
 	owner: process.env.BOT_OWNER,
