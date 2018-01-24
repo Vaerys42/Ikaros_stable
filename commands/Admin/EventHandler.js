@@ -2,6 +2,7 @@ const Commando = require('discord.js-commando');
 
 module.exports = class EventHandler {
 	constructor(client){
+		this.getUserArrive(client);
 		this.getDeleteMessage(client);
 		this.getDeleteRole(client);
 		this.getNewUser(client);
@@ -10,6 +11,21 @@ module.exports = class EventHandler {
 		this.userBan(client);
 		this.userUnban(client);
 		this.getMemberUpdate(client);
+	}
+	getUserArrive(client){
+		client.on('guildMemberAdd', member => {
+			const channel = member.guild.channels.find('name', 'hall_d_entree');
+			if (!channel)
+				return ;
+
+				const command = '```?age 16```'
+				channel.send(
+					`Bonjour <@${member.id}> et bienvenue sur le serveur Hentai Univers !
+Je t'invite a nous indiquer ton age avec la commande suivante avant de recevoir plus d'informations.
+Exemple :
+${command}
+Si tu as 16 ans.`);
+	});
 	}
 	getDeleteMessage(client) {
 		client.on('messageDelete', message => {

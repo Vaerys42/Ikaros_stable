@@ -57,7 +57,7 @@ module.exports = class Warn extends commando.Command {
 								name: "Ikaros",
 							},
 							title: "Warn :",
-							description: `L'utilisateur ${args.member.username} s'est fait warn.`,
+							description: `L'utilisateur <@${args.member.id}> s'est fait warn.`,
 							fields: [
 								{
 									name: 'Warn No°',
@@ -95,11 +95,11 @@ module.exports = class Warn extends commando.Command {
 							name: "Ikaros",
 						},
 						title: "Unwarn :",
-						description: `L'utilisateur ${args.member.username} s'est fait unwarn.`,
+						description: `L'utilisateur <@${args.member.id}> s'est fait unwarn.`,
 						fields: [
 							{
 								name: "Auteur :",
-								value: warnTab[index].banAuthor
+								value: warnTab[index].banAuthor.id
 							},
 							{
 								name: "Motif :",
@@ -133,9 +133,9 @@ module.exports = class Warn extends commando.Command {
 						}
 					}
 				}
-				msg.channel.send(embedMessageStaff)
-				args.member.sendMessage(`Le warn ci dessous à été retiré il vous en reste ${3 - (warnTab.length-1)} desormais.`);
-				args.member.sendMessage(embedMessageUser);
+				msg.channel.send(embedMessageStaff);
+				args.member.send(`Le warn ci dessous à été retiré il vous en reste ${3 - (warnTab.length-1)} desormais.`);
+				args.member.send(embedMessageUser);
 				warnTab.splice(args.num-1, 1);
 				var cache = [];
 				await client.warnTable.put(args.member.id, JSON.stringify(warnTab, function(key, value) {

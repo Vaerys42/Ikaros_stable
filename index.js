@@ -30,18 +30,4 @@ client.on('error', error => {
 	return ;
 });
 
-client.on('guildMemberAdd', member => {
-	const channel = member.guild.channels.find('name', 'hall_d_entree');
-	if (!channel)
-		return ;
-
-		const command = '```?age 16```'
-		channel.send(
-			`Bonjour <@${member.id}> et bienvenue sur le serveur Hentai Univers !
-Je t'invite a nous indiquer ton age avec la commande suivante avant de recevoir plus d'informations.
-Exemple :
-${command}
-Si tu as 16 ans.`);
-});
-
 client.login(process.env.BOT_TOKEN);

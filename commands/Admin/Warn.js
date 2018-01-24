@@ -145,8 +145,8 @@ module.exports = class Warn extends commando.Command {
 						}
 					}
 				}
-				args.member.sendMessage(`Vous êtes un(e) vilain (e) pervers(e), vous venez d'avoir un warn attention il vous en reste  ${3 - warnTab.length} avant de vous faire ban! Soyez sage!`);
-				args.member.sendMessage(embedMessageUser);
+				args.member.send(`Vous êtes un(e) vilain (e) pervers(e), vous venez d'avoir un warn attention il vous en reste  ${3 - warnTab.length} avant de vous faire ban! Soyez sage!`);
+				args.member.send(embedMessageUser);
 				msg.channel.send(embedMessageStaff)
 				if (warnTab.length >= 3) {
 
@@ -266,8 +266,8 @@ module.exports = class Warn extends commando.Command {
 							}
 						}
 					}
-					args.member.sendMessage(`Vous êtes un(e) vilain (e) pervers(e), vous venez d'avoir un warn attention il vous en reste  ${3 - warnTab.length} avant de vous faire ban! Soyez sage!`);
-					args.member.sendMessage(embedMessageUser);
+					args.member.send(`Vous êtes un(e) vilain (e) pervers(e), vous venez d'avoir un warn attention il vous en reste  ${3 - warnTab.length} avant de vous faire ban! Soyez sage!`);
+					args.member.send(embedMessageUser);
 					msg.channel.send(embedMessageStaff)
 				}
 			}

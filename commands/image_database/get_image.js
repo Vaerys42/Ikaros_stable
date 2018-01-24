@@ -66,30 +66,37 @@ module.exports = class getImage extends commando.Command{
 			msg.channel.send("```Merci de demander un tag valide, My Master```");
 			return ;
 		}
-		channel.fetchMessages({limit: 100})
-		.then(messages => {
-			if (args.nb == 'nb'){
-				msg.channel.send(`\`\`\`Il y a ${messages.size} images (ou plus) dans la base de données de la catégorie ${args.tag}, My Master\`\`\``);
-				return ;
-			}
-			if (messages.size == 0){
-				msg.channel.send("```Aucune image de cette catégorie n'est disponble, My Master.```");
-				return ;
-			}
-			const images = messages.array();
-			let select_image = Math.round(Math.random() * images.length);
-			if (select_image >= images.length){
-				select_image -= 1;
-			}
-			let image = images[select_image];
-			if (image == undefined){
-				msg.channel.send("```Une erreur est apparue, veuillez rééssayer, My Master```");
-				console.log(`Error report : ${select_image}`);
-				return ;
-			}
-			image = image.attachments.array();
-			msg.channel.send(image[0].url);
-		});
+		let messages = await channel.fetchMessages({limit: 100});
+		if (messages.size == 0){
+			msg.channel.send("```Aucune image de cette catégorie n'est disponble, My Master.```");
+			return ;
+		}
+		let newMessages;
+		let listSize = messages.size - 1;
+		let lastMess = messages.last();
+		while (listSize != messages.size){
+			newMessages = await channel.fetchMessages({limit: 100, before: lastMess.id});
+			listSize = messages.size;
+			messages = messages.concat(messages, newMessages);
+			lastMess = messages.last();
+		}
+		if (args.nb == 'nb'){
+			msg.channel.send(`\`\`\`Il y a ${messages.size} images dans la base de données de la catégorie ${args.tag}, My Master\`\`\``);
+			return ;
+		}
+		const images = messages.array();
+		let select_image = Math.round(Math.random() * images.length);
+		if (select_image >= images.length){
+			select_image -= 1;
+		}
+		let image = images[select_image];
+		if (image == undefined){
+		msg.channel.send("```Une erreur est apparue, veuillez rééssayer, My Master```");
+			console.log(`Error report : ${select_image}`);
+			return ;
+		}
+		image = image.attachments.array();
+		msg.channel.send(image[0].url);
 	}
 }
 
