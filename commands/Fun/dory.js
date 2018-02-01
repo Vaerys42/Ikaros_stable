@@ -7,7 +7,8 @@ module.exports = class Dory extends commando.Command {
 			name: 'dory',
 			group: 'fun',
 			memberName: 'dory',
-			description: "Bouaaaaaaaaah",
+			description: "Vous voulez vous prendre pour Dory ?",
+			details: "Utilisez la commande ?dory",
 			examples: ["```?dory```"],
 		});
 	}

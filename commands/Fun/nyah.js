@@ -8,6 +8,7 @@ module.exports = class Nyah extends commando.Command {
 			group: 'fun',
 			memberName: 'nyah',
 			description: "Envoie un gif nyah !",
+			details: "Utilisez la commande ?nyah",
 			examples: ["```?nyah```"]
 		});
 	}

@@ -8,6 +8,7 @@ module.exports = class Smile extends commando.Command {
 			group: 'fun',
 			memberName: 'smile',
 			description: "Bah....un sourire quoi xD",
+			details: "Utilisez la commande ?smile",
 			examples: ["```?smile```"]
 		});
 	}
