@@ -1,4 +1,5 @@
 const Commando = require('discord.js-commando');
+const Discord = require('discord.js')
 
 module.exports = class EventHandler {
 	constructor(client){
@@ -11,6 +12,7 @@ module.exports = class EventHandler {
 		this.userBan(client);
 		this.userUnban(client);
 		this.getMemberUpdate(client);
+		this.mentionMessage(client);
 	}
 	getUserArrive(client){
 		client.on('guildMemberAdd', member => {
@@ -189,6 +191,16 @@ Si tu as 16 ans.`);
 		})
 	})
 };
+	mentionMessage(client){
+		client.on('message', function(message){
+			if (message.content.includes("OBJECTION") == true)
+				ft_get_image(message, "OBJECTION");
+			else if (message.content.includes("EXPLOSION") == true)
+				ft_get_image(message, "EXPLOSION");
+			else if (message.content.includes("Amwa") == true)
+				ft_get_image(message, "AMWA");
+		})
+	}
 }
 
 function memberGetRole(oldRole, newRole, Member, logs_channel){
@@ -240,4 +252,24 @@ function printRoles(role1, role2){
 	role2.forEach(value1 =>{
 		console.log(value1.name);
 	})
+}
+
+async function ft_get_image(message, type){
+	let img_server = message.client.guilds.find('name', 'ikaros-dev');
+	if (img_server == undefined){
+		msg.reply("Une erreur est survenue, veuillez contacter <@219011984878731264> merci");
+		return ;
+	}
+	let img_channel = img_server.channels.find('name', 'images');
+	if (img_channel == undefined){
+		msg.reply("Une erreur est survenue, veuillez contacter <@219011984878731264> merci");
+		return ;
+	}
+	let messages = await img_channel.fetchMessages({limit: 100});
+	let result = messages.find('content', type);
+	let url = result.attachments.array();
+	const embed = new Discord.RichEmbed()
+	.setColor(0xE70AC8)
+	.setImage(url[0].url)
+	message.channel.send(embed);
 }
