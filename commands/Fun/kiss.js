@@ -7,13 +7,20 @@ module.exports = class Kiss extends commando.Command {
 			name: 'kiss',
 			group: 'fun',
 			memberName: 'kiss',
-			description: "Chu <3 ",
+			description: "Embrassez la personne de votre choix <3",
+			details: "Utilisez la commande ?kiss",
 			examples: ["```?kiss (membre)```"],
 			args: [
 				{
 					key: 'member',
 					prompt: 'La personne que vous voulez embrasser <3',
 					type: 'user',
+					default: '',
+				},
+				{
+					key: 'extra',
+					prompt: 'Extra Text in command',
+					type: 'string',
 					default: '',
 				}
 			]
