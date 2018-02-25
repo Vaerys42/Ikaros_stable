@@ -14,7 +14,8 @@ module.exports = class Warn extends commando.Command {
 				{
 					key: 'member',
 					prompt: 'The user wich will be warn.',
-					type: 'user'
+					type: 'user',
+					default: process.env.BOT_OWNER
 				},
 				{
 					key: 'num',
@@ -34,8 +35,18 @@ module.exports = class Warn extends commando.Command {
 	// }
 
 	async run(msg, args){
+		if (msg.guild == undefined)
+		{
+			msg.channel.send("Je suis désolée my Master, mais vous ne pouvez pas encore me parler\n");
+			return ;
+		}
 		if (checkPerm(msg, "Mastermodo") == 0 && checkPerm(msg, "Supermodo") == 0 && checkPerm(msg, "Modo") == 0 && checkPerm(msg, "Modo étagères <3") == 0){
 			msg.reply("Nous n'avez pas l'autorisation pour executer cette commande.");
+			return ;
+		}
+		if (args.member.id == process.env.BOT_OWNER)
+		{
+			msg.channel.send("Vous voulez me unwarn ? Avais-je déja fait une bêtise ?\n");
 			return ;
 		}
 		let warnTab = [];
@@ -99,7 +110,7 @@ module.exports = class Warn extends commando.Command {
 						fields: [
 							{
 								name: "Auteur :",
-								value: warnTab[index].banAuthor.id
+								value: `<@${warnTab[index].banAuthor.id}>`
 							},
 							{
 								name: "Motif :",

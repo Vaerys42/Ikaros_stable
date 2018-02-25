@@ -8,7 +8,7 @@ module.exports = class Yandere extends commando.Command {
 			group: 'fun',
 			memberName: 'yandere',
 			description: "Le monde des Yanderes 8D",
-			details: "Utilisez la commande ?yandere",
+			details: "Utilisez la commande `?yandere` pour.....mais.....que......YUKKI !!!!",
 			examples: ["```?yandere```"]
 		});
 	}

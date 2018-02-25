@@ -6,15 +6,16 @@ module.exports = class Warn extends commando.Command {
 			name: 'warn',
 			group: 'admin',
 			memberName: 'warn',
-			description: "Délivre un avertissement (warn) à l'utilisateur ciblé. \n Au bout de 3 avertissements, l'utilisateur est automatiquement banni.",
-			details: "```?warn @utilisateur``` Permet de consulter la liste des warns de l'utilisateur ciblé. ```?warn @utilisateur raison``` ou ```?warn <@utilisateur_id> raison``` Permet de warn un utilisateur.",
+			description: "Délivre un avertissement (warn) à l'utilisateur ciblé. Au bout de 3 avertissements, l'utilisateur est automatiquement banni.",
+			details: "Consulter la liste des warns d'un utilisateur : ```?warn @utilisateur```\n Mettre un warn a un utilisateur : ```?warn @utilisateur raison``` ou ```?warn <@utilisateur_id> raison``` Permet de warn un utilisateur.",
 			examples: ["?warn @utilisateur raison", "?warn <@utilisateur_id> raison"],
 			args:
 			[
 				{
 					key: 'member',
 					prompt: 'The user wich will be warn.',
-					type: 'user'
+					type: 'user',
+					default: process.env.BOT_OWNER
 				},
 				{
 					key: 'reason',
@@ -27,8 +28,23 @@ module.exports = class Warn extends commando.Command {
  	}
 
 	async run(msg, args){
+		if (msg.guild == undefined)
+		{
+			msg.channel.send("Je suis désolée my Master, mais vous ne pouvez pas encore me parler\n");
+			return ;
+		}
 		if (checkPerm(msg, "Mastermodo") == 0 && checkPerm(msg, "Supermodo") == 0 && checkPerm(msg, "Modo") == 0 && checkPerm(msg, "Modo étagères <3") == 0){
 			msg.reply("Vous n'avez pas la permission d'utiliser cette commande");
+			return ;
+		}
+		if (args.member.id == process.env.BOT_OWNER)
+		{
+			msg.channel.send("Vous voulez me warn ? Mais je ne suis pas comme Monika ?!\n");
+			return ;
+		}
+		if (args.reason.length == 0)
+		{
+			msg.channel.send("Merci d'indiquer une raison a l'avertissement, My Master\n");
 			return ;
 		}
 		let warnTab = [];
@@ -195,7 +211,7 @@ module.exports = class Warn extends commando.Command {
 							}
 						}
 					}
-					args.member.sendMessage(embedBanMessageUser);
+					args.member.send(embedBanMessageUser);
 					msg.guild.ban(args.member.id, {reason: 'Cet user à recu 3 avertissement.'});
 					msg.channel.send(embedBanMessageStaff)
 				}

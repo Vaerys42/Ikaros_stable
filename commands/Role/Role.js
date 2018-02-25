@@ -27,6 +27,11 @@ module.exports = class Role extends commando.Command {
 	}
 
 	async run(msg, args){
+		if (msg.guild == undefined)
+		{
+			msg.channel.send("Veuillez vous attribuer les roles dans le channel prévu a cet effet sur le serveur, My Master\n");
+			return ;
+		}
 		if (args.property && args.role){
 			if (args.property == "get"){
 				getRole(msg, args);

@@ -8,7 +8,7 @@ module.exports = class Kick extends commando.Command {
 			group: 'fun',
 			memberName: 'kick',
 			description: "Permet de donner un kick a une personne.",
-			details: "Utilisez la commande ?kick",
+			details: "Utilisez la commande `?kick` et vous pourrez coller un High Kick a la personne de votre choix !",
 			examples: ["```?kick```"],
 			args: [
 				{

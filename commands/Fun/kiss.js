@@ -8,8 +8,7 @@ module.exports = class Kiss extends commando.Command {
 			group: 'fun',
 			memberName: 'kiss',
 			description: "Embrassez la personne de votre choix <3",
-			details: "Utilisez la commande ?kiss",
-			examples: ["```?kiss (membre)```"],
+			details: "Utilisez la commande `?kiss` pour embrasser une personne que vous aimez",
 			args: [
 				{
 					key: 'member',

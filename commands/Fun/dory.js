@@ -8,9 +8,8 @@ module.exports = class Dory extends commando.Command {
 			group: 'fun',
 			memberName: 'dory',
 			description: "Vous voulez vous prendre pour Dory ?",
-			details: "Utilisez la commande ?dory",
-			examples: ["```?dory```"],
-		});
+			details: "Utilisez la commande `?dory` et vous saurez imiter la baleine !"
+			});
 	}
 
 	async run(msg, args){

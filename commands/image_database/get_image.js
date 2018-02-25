@@ -15,6 +15,7 @@ module.exports = class getImage extends commando.Command{
 					key: 'tag',
 					prompt: 'the tag that will be search',
 					type: 'string',
+					default: 'tags',
 				},
 				{
 					key: 'nb',
@@ -26,6 +27,11 @@ module.exports = class getImage extends commando.Command{
 		});
 	}
 	async run(msg, args){
+		if (msg.guild == undefined)
+		{
+			msg.channel.send("Les commandes d'images doivent être utilisées sur le serveur, My Master\n");
+			return ;
+		}
 		if (msg.channel.nsfw == false){
 			msg.channel.send("```Merci d'utiliser les commandes d'images dans les channels adaptés, My Master.```");
 			return ;

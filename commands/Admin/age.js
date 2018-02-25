@@ -7,13 +7,16 @@ module.exports = class Age extends commando.Command {
 			group: 'admin',
 			memberName: 'age',
 			description: "Vérifier l'age d'un nouveau membre.",
-			details: `utilisable une seule fois dans le Hall d'entrée.
-Attribut le role "Membres" si l'utilisateur est vérifié. `,
-			examples: ["```?age 16```"]
+			details: "C'est la jolie commande qui vous réceptionné dans le hall <3.\nExemple: `?age 16`"
 		});
 	}
 
 	async run(msg, args){
+		if (msg.guild == undefined)
+		{
+			msg.channel.send("Je suis désolée my Master, mais vous ne pouvez pas encore me parler\n");
+			return ;
+		}
 		if (args.length == 0){
 			msg.reply("Indiquez un age merci");
 			return ;
@@ -24,7 +27,7 @@ Attribut le role "Membres" si l'utilisateur est vérifié. `,
 			return ;
 		}
 		if (checkAgeChar(args) == 1){
-			if (args >= 0 && args <= 17){
+			if (args <= 17){
 					msg.channel.send("Neko-Lulu pas contente, Neko pas accepter toi! Entrée au paradis refusée!");
 					msg.member.ban("Trop jeune");
 			}
