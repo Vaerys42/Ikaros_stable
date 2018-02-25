@@ -42,11 +42,6 @@ module.exports = class Warn extends commando.Command {
 			msg.channel.send("Vous voulez me warn ? Mais je ne suis pas comme Monika ?!\n");
 			return ;
 		}
-		if (args.reason.length == 0)
-		{
-			msg.channel.send("Merci d'indiquer une raison a l'avertissement, My Master\n");
-			return ;
-		}
 		let warnTab = [];
 		const client = msg.client;
 		if (!args.reason) {
