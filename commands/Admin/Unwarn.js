@@ -15,7 +15,7 @@ module.exports = class Warn extends commando.Command {
 					key: 'member',
 					prompt: 'The user wich will be warn.',
 					type: 'user',
-					default: process.env.BOT_OWNER
+					default: '<@393898001577410561>'
 				},
 				{
 					key: 'num',
@@ -44,7 +44,7 @@ module.exports = class Warn extends commando.Command {
 			msg.reply("Nous n'avez pas l'autorisation pour executer cette commande.");
 			return ;
 		}
-		if (args.member.id == process.env.BOT_OWNER)
+		if (args.member.id == 393898001577410561)
 		{
 			msg.channel.send("Vous voulez me unwarn ? Avais-je déja fait une bêtise ?\n");
 			return ;
