@@ -1,15 +1,29 @@
 const commando = require('discord.js-commando');
 const Discord = require('discord.js');
 
-module.exports = class Dory extends commando.Command {
+module.exports = class Boobs extends commando.Command {
 	constructor(client) {
 		super(client, {
-			name: 'dory',
+			name: 'boobs',
 			group: 'fun',
-			memberName: 'dory',
-			description: "Vous voulez vous prendre pour Dory ?",
-			details: "Utilisez la commande `?dory` et vous saurez imiter la baleine !"
-			});
+			memberName: 'boobs',
+			description: "Pour la sainte gloire des OPPAI !",
+			details: "Utilisez la commande `?boobs` pour tripoter une personne qui aime ça :3",
+			args: [
+				{
+					key: 'member',
+					prompt: 'La personne que vous voulez tripoter <3',
+					type: 'user',
+					default: '',
+				},
+				{
+					key: 'extra',
+					prompt: 'Extra Text in command',
+					type: 'string',
+					default: '',
+				}
+			]
+		});
 	}
 
 	async run(msg, args){
@@ -38,17 +52,24 @@ module.exports = class Dory extends commando.Command {
 			messages = messages.concat(messages, newMessages);
 			lastMess = messages.last();
 		}
-		let message_list = messages.findAll('content', 'dory');
+        let message_list = messages.findAll('content', 'boobs');
 		let choose = Math.round(Math.random() * message_list.length);
 		if (choose >= message_list.length){
 			choose -= 1;
 		}
-		let message = message_list[choose];
+        let message = message_list[choose];
+        if (message == undefined)
+            return ;
 		let url = message.attachments.array();
+		let str;
+		if (args.member.length == 0)
+			str = `${msg.author} tripote l'air`;
+		else
+			str = `${msg.author} tripote sadiquement ${args.member}`;
 		const embed = new Discord.RichEmbed()
-		.setDescription(`${msg.author} se prend pour Dory`)
+		.setDescription(str)
 		.setColor(0xE70AC8)
 		.setImage(url[0].url)
-		msg.channel.send(embed);
+        msg.channel.send(embed);
 	}
 }

@@ -14,6 +14,11 @@ module.exports = class Yandere extends commando.Command {
 	}
 
 	async run(msg, args){
+		if (msg.guild == undefined)
+		{
+			msg.channel.send("Je suis désolée my Master, mais vous ne pouvez pas encore me parler\n");
+			return ;
+		}
 		let gif_server = msg.client.guilds.find('name', 'ikaros-dev');
 		if (gif_server == undefined){
 			msg.reply("Une erreur est survenue, veuillez contacter <@219011984878731264> merci");

@@ -27,6 +27,11 @@ module.exports = class Kiss extends commando.Command {
 	}
 
 	async run(msg, args){
+		if (msg.guild == undefined)
+		{
+			msg.channel.send("Je suis désolée my Master, mais vous ne pouvez pas encore me parler\n");
+			return ;
+		}
 		let gif_server = msg.client.guilds.find('name', 'ikaros-dev');
 		if (gif_server == undefined){
 			msg.reply("Une erreur est survenue, veuillez contacter <@219011984878731264> merci");
@@ -56,11 +61,11 @@ module.exports = class Kiss extends commando.Command {
 		let url = message.attachments.array();
 		let str;
 		if (args.member.length == 0)
-			str = `${msg.author.username} essaie d'embrasser le vent.`;
+			str = `${msg.author} essaie d'embrasser le vent.`;
 		else
-			str = `${msg.author.username} saute sur ${args.member.username} et l'embrasse, Kawaii <3`;
+			str = `${msg.author} saute sur ${args.member} et l'embrasse, Kawaii <3`;
 		const embed = new Discord.RichEmbed()
-		.setTitle(str)
+		.setDescription(str)
 		.setColor(0xE70AC8)
 		.setImage(url[0].url)
 		msg.channel.send(embed);

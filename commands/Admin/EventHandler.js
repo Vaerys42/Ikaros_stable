@@ -199,6 +199,10 @@ Si tu as 16 ans.`);
 				ft_get_image(message, "EXPLOSION");
 			else if (message.content.includes("Amwa") == true)
 				ft_get_image(message, "AMWA");
+			else if (message.mentions.users.size != 0 && message.content.includes("patpat"))
+				ft_mention(message, message.mentions.users, "PATPAT");
+			else if (message.mentions.users.size != 0)
+				ft_mention(message, message.mentions.users, "IKAROS");
 		})
 	}
 }
@@ -272,4 +276,12 @@ async function ft_get_image(message, type){
 	.setColor(0xE70AC8)
 	.setImage(url[0].url)
 	message.channel.send(embed);
+}
+
+async function ft_mention(message, mentions, name)
+{
+	let ika = mentions.find('id', `393898001577410561`);
+	if (ika != null){
+		ft_get_image(message, name);
+	}
 }

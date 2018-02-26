@@ -28,6 +28,11 @@ module.exports = class Kick extends commando.Command {
 	}
 
 	async run(msg, args){
+		if (msg.guild == undefined)
+		{
+			msg.channel.send("Je suis désolée my Master, mais vous ne pouvez pas encore me parler\n");
+			return ;
+		}
 		let gif_server = msg.client.guilds.find('name', 'ikaros-dev');
 		if (gif_server == undefined){
 			msg.reply("Une erreur est survenue, veuillez contacter <@219011984878731264> merci");
@@ -57,11 +62,11 @@ module.exports = class Kick extends commando.Command {
 		let url = message.attachments.array();
 		let str;
 		if (args.member.length == 0)
-			str = `${msg.author.username} essaie de frapper le vent. Échec critique`;
+			str = `${msg.author} essaie de frapper le vent. Échec critique`;
 		else
-			str = `${msg.author.username} colle un High Kick a ${args.member.username}`;
+			str = `${msg.author} colle un High Kick a ${args.member}`;
 		const embed = new Discord.RichEmbed()
-		.setTitle(str)
+		.setDescription(str)
 		.setColor(0xE70AC8)
 		.setImage(url[0].url)
 		msg.channel.send(embed);
