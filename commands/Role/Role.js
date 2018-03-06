@@ -145,7 +145,7 @@ function getRole(msg, args){
 		msg.channel.send("```Ce role n'existe pas ou n'est pas assignable```");
 		return ;
 	}
-	if (!args.role.startsWith("Fan")){
+	if (!args.role.startsWith("Fan") && !args.role.startsWith("Posteur")){
 		msg.channel.send(`Vous n'avez pas a vous assigner ce role, ${msg.member.user.username}`);
 		return ;
 	}
@@ -185,7 +185,7 @@ function delRole(msg, args){
 }
 
 function remRole(msg, args){
-	if (!args.role.startsWith("Fan")){
+	if (!args.role.startsWith("Fan") && !args.role.startsWith("Posteur")){
 		msg.channel.send(`Vous n'avez pas a vous retirer ce role, ${msg.member.user.username}`);
 		return ;
 	}

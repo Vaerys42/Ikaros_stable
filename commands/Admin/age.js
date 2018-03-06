@@ -56,9 +56,10 @@ function checkAgeChar (age){
 }
 
 function sendRules (msg){
+	channel = msg.guild.channels.find('name', 'charte');
 	msg.member.send(`Bonjour et bienvenue a toi, jeune pervers(e) :heart:.
 Tu viens d'arriver sur le serveur Hentai Univers et je suis la pour t'aider.
-Je t'invite à aller lire la charte située dans le channel #charte du serveur pour être au
+Je t'invite à aller lire la charte située dans le channel ${channel} du serveur pour être au
 courant des règles a respecter ici ^^ pense aussi a vérifier les messages épinglés,
 ils contiennent des infos utiles !
 Sinon, si tu as des questions, n'hésite pas a contacter les Modos !

@@ -13,6 +13,7 @@ module.exports = class EventHandler {
 		this.userUnban(client);
 		this.getMemberUpdate(client);
 		this.mentionMessage(client);
+		this.addReaction(client);
 	}
 	getUserArrive(client){
 		client.on('guildMemberAdd', member => {
@@ -199,12 +200,30 @@ Si tu as 16 ans.`);
 				ft_get_image(message, "EXPLOSION");
 			else if (message.content.includes("Amwa") == true)
 				ft_get_image(message, "AMWA");
+			else if (message.content.includes("JARIV") == true)
+				ft_get_image(message, "JARIV");
 			else if (message.mentions.users.size != 0 && message.content.includes("patpat"))
 				ft_mention(message, message.mentions.users, "PATPAT");
 			else if (message.mentions.users.size != 0)
 				ft_mention(message, message.mentions.users, "IKAROS");
 		})
-	}
+	};
+
+	addReaction(client){
+		client.on('messageReactionAdd', function(messageReaction, user){
+			if (messageReaction.message.attachments.size == 0)
+				return ;
+			if (messageReaction.message.channel.nsfw == false)
+				return ;
+			let notif = messageReaction.message.member.roles.find('name', 'Posteur');
+			if (notif == null)
+				return ;
+			let emoji = messageReaction.emoji.name;
+			let userReact = user;
+			let channelReact = messageReaction.message.channel;
+			messageReaction.message.author.send(`Félicitations ! ${userReact} a réagi sur votre image avec ${emoji} dans le channel ${channelReact}`);
+		})
+	};
 }
 
 function memberGetRole(oldRole, newRole, Member, logs_channel){
@@ -278,9 +297,9 @@ async function ft_get_image(message, type){
 	message.channel.send(embed);
 }
 
-async function ft_mention(message, mentions, name)
+async function ft_mention(message, ment, name)
 {
-	let ika = mentions.find('id', `393898001577410561`);
+	let ika = ment.find('id', `390451747027681300`);
 	if (ika != null){
 		ft_get_image(message, name);
 	}
