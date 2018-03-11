@@ -14,7 +14,7 @@ module.exports = class Ban extends commando.Command {
 				{
 					key: 'member',
 					prompt: 'The user wich will be ban.',
-					type: 'string',
+					type: 'user',
 					default: '<@393898001577410561>'
 				},
 				{
@@ -94,11 +94,11 @@ module.exports = class Ban extends commando.Command {
 			if (is_member == true){
 				await args.member.send(embedMessageUser);
 			}
-			msg.guild.ban(args.member.user, {reason: args.reason});
+			msg.guild.ban(args.member, {reason: args.reason});
 			msg.channel.send(embedMessageStaff)
 
 		}catch (err){
-			msg.reply(`L'utilisateur <@${args.member.id}> n\'a pas été banni du serveur`)
+			msg.reply(`L'utilisateur ${args.member} n\'a pas été banni du serveur`)
 		}
 	}
 }
