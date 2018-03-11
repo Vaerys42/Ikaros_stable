@@ -52,7 +52,7 @@ module.exports = class Ban extends commando.Command {
 						name: "Ikaros",
 					},
 					title: "Ban :",
-					description: `L'utilisateur ${args.member.username} s'est fait ban.`,
+					description: `L'utilisateur ${args.member} s'est fait ban.`,
 					fields: [
 						{
 							name: "Auteur :",
@@ -90,12 +90,11 @@ module.exports = class Ban extends commando.Command {
 					}
 				}
 			}
-
 			const is_member = msg.guild.members.exists('user', args.member);
 			if (is_member == true){
 				await args.member.send(embedMessageUser);
 			}
-			msg.guild.ban(args.member.id, {reason: args.reason});
+			msg.guild.ban(args.member.user, {reason: args.reason});
 			msg.channel.send(embedMessageStaff)
 
 		}catch (err){

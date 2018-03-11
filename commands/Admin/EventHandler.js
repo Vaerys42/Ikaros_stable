@@ -164,7 +164,7 @@ Si tu as 16 ans.`);
 				color : 0x50f0b0,
 				fields :[{
 					name: "Log - Membre Banni",
-					value: `Le membre <@${user}> a été banni du serveur`,
+					value: `Le membre ${user} a été banni du serveur`,
 				}],
 				timestamp: new Date(),
 				footer: {
@@ -182,7 +182,7 @@ Si tu as 16 ans.`);
 				color : 0x50f0b0,
 				fields :[{
 					name: "Log - Membre Débanni",
-					value: `Le membre <@${user}> a été débanni du serveur`,
+					value: `Le membre ${user} a été débanni du serveur`,
 				}],
 				timestamp: new Date(),
 				footer: {

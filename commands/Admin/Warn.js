@@ -68,7 +68,7 @@ module.exports = class Warn extends commando.Command {
 								name: "Ikaros",
 							},
 							title: "Warn :",
-							description: `L'utilisateur ${args.member.username} s'est fait warn.`,
+							description: `L'utilisateur ${args.member} s'est fait warn.`,
 							fields: [
 								{
 									name: 'Warn No°',
@@ -125,7 +125,7 @@ module.exports = class Warn extends commando.Command {
 							name: "Ikaros",
 						},
 						title: "Warn :",
-						description: `L'utilisateur ${args.member.username} s'est fait warn.`,
+						description: `L'utilisateur ${args.member} s'est fait warn.`,
 						fields: [
 							{
 								name: "Auteur :",
@@ -196,7 +196,7 @@ module.exports = class Warn extends commando.Command {
 								name: "Ikaros",
 							},
 							title: "Ban :",
-							description: `L'utilisateur ${args.member.username} s'est fait Ban.`,
+							description: `L'utilisateur ${args.member} s'est fait Ban.`,
 							fields: [
 								{
 									name: "Auteur :",
