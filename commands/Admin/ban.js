@@ -14,8 +14,8 @@ module.exports = class Ban extends commando.Command {
 				{
 					key: 'member',
 					prompt: 'The user wich will be ban.',
-					type: 'user',
-					default: '<@393898001577410561>',
+					type: 'string',
+					default: '<@393898001577410561>'
 				},
 				{
 					key: 'reason',
@@ -28,11 +28,8 @@ module.exports = class Ban extends commando.Command {
  	}
 
 	async run(msg, args){
-		if (msg.guild == undefined)
-		{
-			msg.channel.send("Je suis désolée my Master, mais vous ne pouvez pas encore me parler\n");
+		if (!(msg.content.startsWith("?")))
 			return ;
-		}
 		if (checkPerm(msg, "Mastermodo") == 0 && checkPerm(msg, "Supermodo") == 0 && checkPerm(msg, "Modo") == 0){
 			msg.reply("Vous n'êtes pas autorisé a éxécuter cette commande");
 			return ;
@@ -113,3 +110,4 @@ function checkPerm(msg, args)
 		return 1;
 	return 0;
 }
+

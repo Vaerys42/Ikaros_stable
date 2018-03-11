@@ -70,7 +70,7 @@ module.exports = class getImage extends commando.Command{
 			})
 			return ;
 		}
-		let bot = msg.guild.members.find('id', '393898001577410561');
+		let bot = msg.guild.members.find('id', '390451747027681300');
 		bot = bot.user;
 		if (bot.username == "Monika"){
 			monika_image(msg, img_server);
@@ -128,7 +128,7 @@ async function monika_image(msg, img_server){
 	const monika_channel = img_server.channels.find('name', 'monika');
 	if (monika_channel == undefined)
 		return ;
-	let monika_message = await monika_channel.fetchMessages({limit: 1});
+	let monika_message = await monika_channel.fetchMessage('422235115247370251');
 	monika_message = monika_message.attachments.array();
 	const monika_embed = new Discord.RichEmbed()
 	.setTitle("Reste avec moi. Je ne veux pas que tu me quittes")

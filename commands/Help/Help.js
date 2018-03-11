@@ -33,6 +33,8 @@ module.exports = class Help extends commando.Command {
 			msg.channel.send("Je suis désolée my Master, mais vous ne pouvez pas encore me parler\n");
 			return ;
 		}
+		if (!(msg.content.startsWith("?")))
+			return ;
 		const client = msg.client;
 		if (!checkPerm(msg, "Membres") == 0) {
 
@@ -92,7 +94,7 @@ module.exports = class Help extends commando.Command {
 								author: {
 									name: "Ikaros",
 								},
-								title: "Module Admin",
+								title: `Module ${args.module}`,
 								description: `Liste des commandes du module ${args.module} : ${module_list}`,
 								footer: {
 									text: "© Ikaros, Hentai Univers"

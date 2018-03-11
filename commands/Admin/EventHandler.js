@@ -204,6 +204,8 @@ Si tu as 16 ans.`);
 				ft_get_image(message, "JARIV");
 			else if (message.mentions.users.size != 0 && (message.content.includes("patpat") || message.content.includes("Patpat")))
 				ft_mention(message, message.mentions.users, "PATPAT");
+			else if (message.mentions.users.size != 0 && (message.content.includes("ban") || message.content.includes("Ban")))
+				ft_mention(message, message.mentions.users, "BAN");
 			else if (message.mentions.users.size != 0)
 				ft_mention(message, message.mentions.users, "IKAROS");
 		})
@@ -301,7 +303,7 @@ async function ft_get_image(message, type){
 
 async function ft_mention(message, ment, name)
 {
-	let ika = ment.find('id', '393898001577410561');
+	let ika = ment.find('id', `393898001577410561`);
 	if (ika != null){
 		if (await is_monika(message) == 1)
 			return ;

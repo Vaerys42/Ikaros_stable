@@ -33,6 +33,8 @@ module.exports = class Warn extends commando.Command {
 			msg.channel.send("Je suis désolée my Master, mais vous ne pouvez pas encore me parler\n");
 			return ;
 		}
+		if (!(msg.content.startsWith("?")))
+			return ;
 		if (checkPerm(msg, "Mastermodo") == 0 && checkPerm(msg, "Supermodo") == 0 && checkPerm(msg, "Modo") == 0 && checkPerm(msg, "Modo étagères <3") == 0){
 			msg.reply("Vous n'avez pas la permission d'utiliser cette commande");
 			return ;
@@ -40,6 +42,11 @@ module.exports = class Warn extends commando.Command {
 		if (args.member.id == 393898001577410561)
 		{
 			msg.channel.send("Vous voulez me warn ? Mais je ne suis pas comme Monika ?!\n");
+			return ;
+		}
+		if (args.reason.length == 0)
+		{
+			msg.channel.send("Merci d'indiquer une raison a l'avertissement, My Master\n");
 			return ;
 		}
 		let warnTab = [];

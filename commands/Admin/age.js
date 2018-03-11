@@ -17,6 +17,8 @@ module.exports = class Age extends commando.Command {
 			msg.channel.send("Je suis désolée my Master, mais vous ne pouvez pas encore me parler\n");
 			return ;
 		}
+		if (!(msg.content.startsWith("?")))
+			return ;
 		if (args.length == 0){
 			msg.reply("Indiquez un age merci");
 			return ;

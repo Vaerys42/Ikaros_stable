@@ -33,6 +33,10 @@ module.exports = class Kick extends commando.Command {
 			msg.channel.send("Je suis désolée my Master, mais vous ne pouvez pas encore me parler\n");
 			return ;
 		}
+		if (!(msg.content.startsWith("?")))
+			return ;
+		if (await is_monika(msg) == 1)
+			return ;
 		let gif_server = msg.client.guilds.find('name', 'ikaros-dev');
 		if (gif_server == undefined){
 			msg.reply("Une erreur est survenue, veuillez contacter <@219011984878731264> merci");
@@ -71,4 +75,23 @@ module.exports = class Kick extends commando.Command {
 		.setImage(url[0].url)
 		msg.channel.send(embed);
 	}
+}
+
+async function is_monika(msg){
+	let bot = msg.guild.members.find('id', '393898001577410561');
+	bot = bot.user;
+	if (bot.username != "Monika")
+		return (0);
+	const img_server = msg.client.guilds.find('name', 'ikaros-dev');
+	const monika_channel = img_server.channels.find('name', 'monika');
+	if (monika_channel == undefined)
+		return ;
+	let monika_message = await monika_channel.fetchMessages({limit: 1});
+	monika_message = monika_message.attachments.array();
+	const monika_embed = new Discord.RichEmbed()
+	.setTitle("Reste avec moi. Je ne veux pas que tu me quittes")
+	.setColor(0xE70AC8)
+	.setImage(monika_message[0].url)
+	msg.channel.send(monika_embed);
+	return (1);
 }
