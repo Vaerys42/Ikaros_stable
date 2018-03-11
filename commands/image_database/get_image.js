@@ -1,4 +1,5 @@
 const commando = require('discord.js-commando');
+const Discord = require('discord.js');
 
 module.exports = class getImage extends commando.Command{
 	constructor(client) {
@@ -32,6 +33,8 @@ module.exports = class getImage extends commando.Command{
 			msg.channel.send("Les commandes d'images doivent être utilisées sur le serveur, My Master\n");
 			return ;
 		}
+		if (!(msg.content.startsWith("?")))
+			return ;
 		if (msg.channel.nsfw == false){
 			msg.channel.send("```Merci d'utiliser les commandes d'images dans les channels adaptés, My Master.```");
 			return ;
@@ -65,6 +68,12 @@ module.exports = class getImage extends commando.Command{
 					}],
 				}
 			})
+			return ;
+		}
+		let bot = msg.guild.members.find('id', '393898001577410561');
+		bot = bot.user;
+		if (bot.username == "Monika"){
+			monika_image(msg, img_server);
 			return ;
 		}
 		const channel = getChannelRequest(img_server, args.tag);
@@ -102,7 +111,10 @@ module.exports = class getImage extends commando.Command{
 			return ;
 		}
 		image = image.attachments.array();
-		msg.channel.send(image[0].url);
+		const embed = new Discord.RichEmbed()
+		.setColor(0xE70AC8)
+		.setImage(image[0].url)
+		msg.channel.send(embed);
 	}
 }
 
@@ -110,4 +122,17 @@ function getChannelRequest(img_server, tag){
 	let channel_name = 'nsfw-' + tag;
 	let img_chan = img_server.channels.find('name', channel_name);
 	return img_chan;
+}
+
+async function monika_image(msg, img_server){
+	const monika_channel = img_server.channels.find('name', 'monika');
+	if (monika_channel == undefined)
+		return ;
+	let monika_message = await monika_channel.fetchMessages({limit: 1});
+	monika_message = monika_message.attachments.array();
+	const monika_embed = new Discord.RichEmbed()
+	.setTitle("Reste avec moi. Je ne veux pas que tu me quittes")
+	.setColor(0xE70AC8)
+	.setImage(monika_message[0].url)
+	msg.channel.send(monika_embed);
 }

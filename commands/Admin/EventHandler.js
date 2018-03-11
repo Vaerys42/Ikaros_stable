@@ -74,7 +74,7 @@ Si tu as 16 ans.`);
 				color : 0x50f0b0,
 				fields :[{
 					name: "Log - Nouveau Membre",
-					value: `Le membre <@${membre.id}> a rejoint le serveur`,
+					value: `Le membre ${membre} a rejoint le serveur`,
 				}],
 				timestamp: new Date(),
 				footer: {
@@ -92,7 +92,7 @@ Si tu as 16 ans.`);
 				color : 0x50f0b0,
 				fields :[{
 					name: "Log - Membre Parti",
-					value: `Le membre <@${membre.id}> a quitté le serveur`,
+					value: `Le membre ${membre} a quitté le serveur`,
 				}],
 				timestamp: new Date(),
 				footer: {
@@ -110,7 +110,7 @@ Si tu as 16 ans.`);
 				color : 0x50f0b0,
 				fields :[{
 					name: "Log - Création Role",
-					value: `Le role ${role.name} a été créé.`,
+					value: `Le role ${role} a été créé.`,
 				}],
 				timestamp: new Date(),
 				footer: {
@@ -128,7 +128,7 @@ Si tu as 16 ans.`);
 					color : 0x50f0b0,
 					fields :[{
 						name: "Log - Suppression Role",
-						value: `Le role ${role.name} a été supprimé.`,
+						value: `Le role ${role} a été supprimé.`,
 					}],
 					timestamp: new Date(),
 					footer: {
@@ -164,7 +164,7 @@ Si tu as 16 ans.`);
 				color : 0x50f0b0,
 				fields :[{
 					name: "Log - Membre Banni",
-					value: `Le membre <@${user.id}> a été banni du serveur`,
+					value: `Le membre <@${user}> a été banni du serveur`,
 				}],
 				timestamp: new Date(),
 				footer: {
@@ -182,7 +182,7 @@ Si tu as 16 ans.`);
 				color : 0x50f0b0,
 				fields :[{
 					name: "Log - Membre Débanni",
-					value: `Le membre <@${user.id}> a été débanni du serveur`,
+					value: `Le membre <@${user}> a été débanni du serveur`,
 				}],
 				timestamp: new Date(),
 				footer: {
@@ -198,12 +198,14 @@ Si tu as 16 ans.`);
 				ft_get_image(message, "OBJECTION");
 			else if (message.content.includes("EXPLOSION") == true)
 				ft_get_image(message, "EXPLOSION");
-			else if (message.content.includes("Amwa") == true)
+			else if (message.content.includes("Amwa") == true || message.content.includes("amwa") == true || message.content.includes("AMWA") == true)
 				ft_get_image(message, "AMWA");
-			else if (message.content.includes("JARIV") == true)
+			else if (message.content.includes("JARIV") == true || message.content.includes("Jariv") == true || message.content.includes("jariv") == true)
 				ft_get_image(message, "JARIV");
-			else if (message.mentions.users.size != 0 && message.content.includes("patpat"))
+			else if (message.mentions.users.size != 0 && (message.content.includes("patpat") || message.content.includes("Patpat")))
 				ft_mention(message, message.mentions.users, "PATPAT");
+			else if (message.mentions.users.size != 0 && (message.content.includes("ban") || message.content.includes("Ban")))
+				ft_mention(message, message.mentions.users, "BAN");
 			else if (message.mentions.users.size != 0)
 				ft_mention(message, message.mentions.users, "IKAROS");
 		})
@@ -234,7 +236,7 @@ function memberGetRole(oldRole, newRole, Member, logs_channel){
 					color : 0x50f0b0,
 					fields :[{
 						name: "Log - Role obtenu",
-						value: `Le membre <@${Member.user.id}> a obtenu le role ${newRole[i]}.`,
+						value: `Le membre ${Member} a obtenu le role ${newRole[i]}.`,
 					}],
 					timestamp: new Date(),
 					footer: {
@@ -255,7 +257,7 @@ function memberRemoveRole(oldRole, newRole, Member, logs_channel){
 					color : 0x50f0b0,
 					fields :[{
 						name: "Log - Role retiré",
-						value: `Le membre <@${Member.user.id}> n'a plus le role ${oldRole[i]}.`,
+						value: `Le membre ${Member} n'a plus le role ${oldRole[i]}.`,
 					}],
 					timestamp: new Date(),
 					footer: {
@@ -278,6 +280,8 @@ function printRoles(role1, role2){
 }
 
 async function ft_get_image(message, type){
+	if (await is_monika(message) == 1)
+		return ;
 	let img_server = message.client.guilds.find('name', 'ikaros-dev');
 	if (img_server == undefined){
 		msg.reply("Une erreur est survenue, veuillez contacter <@219011984878731264> merci");
@@ -299,8 +303,29 @@ async function ft_get_image(message, type){
 
 async function ft_mention(message, ment, name)
 {
-	let ika = ment.find('id', `390451747027681300`);
+	let ika = ment.find('id', '393898001577410561');
 	if (ika != null){
+		if (await is_monika(message) == 1)
+			return ;
 		ft_get_image(message, name);
 	}
+}
+
+async function is_monika(msg){
+	let bot = msg.guild.members.find('id', '393898001577410561');
+	bot = bot.user;
+	if (bot.username != "Monika")
+		return (0);
+	const img_server = msg.client.guilds.find('name', 'ikaros-dev');
+	const monika_channel = img_server.channels.find('name', 'monika');
+	if (monika_channel == undefined)
+		return ;
+	let monika_message = await monika_channel.fetchMessages({limit: 1});
+	monika_message = monika_message.attachments.array();
+	const monika_embed = new Discord.RichEmbed()
+	.setTitle("Reste avec moi. Je ne veux pas que tu me quittes")
+	.setColor(0xE70AC8)
+	.setImage(monika_message[0].url)
+	msg.channel.send(monika_embed);
+	return (1);
 }
