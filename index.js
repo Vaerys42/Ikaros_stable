@@ -22,6 +22,7 @@ client.registry
 	['role', 'Role'],
 	['image', 'Image'],
 	['fun', 'Fun'],
+	['utilities', 'Utilities'],
 ])
 
 .registerCommandsIn(path.join(__dirname, 'commands'));
