@@ -44,7 +44,7 @@ module.exports = class getImage extends commando.Command{
 			let tags_list = "";
 			let tags_tab = [];
 			img_server.channels.forEach(channel => {
-				if (channel.nsfw == true){
+				if (channel.nsfw == true && channel.name.startsWith("nsfw") == 1){
 					tags_tab.push({
 						value : `${channel.name}`
 					})
@@ -70,7 +70,7 @@ module.exports = class getImage extends commando.Command{
 			})
 			return ;
 		}
-		let bot = msg.guild.members.find('id', '393898001577410561');
+		let bot = msg.guild.members.find('id', '390451747027681300');
 		if (bot != null){
 			bot = bot.user;
 			if (bot.username == "Monika"){
@@ -131,9 +131,10 @@ async function monika_image(msg, img_server){
 	if (monika_channel == undefined)
 		return ;
 	let monika_message = await monika_channel.fetchMessages({limit: 1});
+	monika_message = monika_message.array()[0];
 	monika_message = monika_message.attachments.array();
 	const monika_embed = new Discord.RichEmbed()
-	.setTitle("Reste avec moi. Je ne veux pas que tu me quittes")
+	.setTitle("Tu es venu t'amuser avec moi ?")
 	.setColor(0xE70AC8)
 	.setImage(monika_message[0].url)
 	msg.channel.send(monika_embed);

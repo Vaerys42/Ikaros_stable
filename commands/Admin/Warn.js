@@ -33,7 +33,7 @@ module.exports = class Warn extends commando.Command {
 			msg.channel.send("Je suis désolée my Master, mais vous ne pouvez pas encore me parler\n");
 			return ;
 		}
-		if (!(msg.content.startsWith("?")))
+		if (!(msg.content.startsWith("?warn")))
 			return ;
 		if (checkPerm(msg, "Mastermodo") == 0 && checkPerm(msg, "Supermodo") == 0 && checkPerm(msg, "Modo") == 0 && checkPerm(msg, "Modo étagères <3") == 0){
 			msg.reply("Vous n'avez pas la permission d'utiliser cette commande");
@@ -68,7 +68,7 @@ module.exports = class Warn extends commando.Command {
 								name: "Ikaros",
 							},
 							title: "Warn :",
-							description: `L'utilisateur ${args.member} s'est fait warn.`,
+							description: `L'utilisateur ${args.member.username} s'est fait warn.`,
 							fields: [
 								{
 									name: 'Warn No°',
@@ -125,7 +125,7 @@ module.exports = class Warn extends commando.Command {
 							name: "Ikaros",
 						},
 						title: "Warn :",
-						description: `L'utilisateur ${args.member} s'est fait warn.`,
+						description: `L'utilisateur ${args.member.username} s'est fait warn.`,
 						fields: [
 							{
 								name: "Auteur :",
@@ -196,7 +196,7 @@ module.exports = class Warn extends commando.Command {
 								name: "Ikaros",
 							},
 							title: "Ban :",
-							description: `L'utilisateur ${args.member} s'est fait Ban.`,
+							description: `L'utilisateur ${args.member.username} s'est fait Ban.`,
 							fields: [
 								{
 									name: "Auteur :",

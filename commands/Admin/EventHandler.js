@@ -36,106 +36,67 @@ Si tu as 16 ans.`);
 				return ;
 			}
 		const logs_channel = message.guild.channels.find('name', 'logs');
-		if (message.content.length === 0){
-			message.content = "[NO TEXT IN MESSAGE]";
+		let embed = new Discord.RichEmbed()
+		.setTitle("Log - Message supprimé")
+		.setColor(0x50f0b0)
+		.addField("Channel:", `Message supprimé dans ${message.channel}`)
+		.setFooter("© Ikaros, Hentai Univers")
+		.setTimestamp();
+		if (message.content.length != 0)
+			embed.addField("Message:", `${message.content}`);
+		else
+			embed.addField("Image supprimée", ":arrow_down: :arrow_down: :arrow_down:");
+		if (message.attachments.size != 0){
+			let image = message.attachments.array();
+			embed.setImage(image[0].url);
 		}
-		logs_channel.send({
-			embed :{
-				color : 0x50f0b0,
-				fields :[{
-					name: "Log - Message Supprimé",
-					value: `Message supprimé dans ${message.channel}`,
-				},
-				{
-					name: "Message",
-					value: `${message.content}`,
-				},
-				{
-					name: "Auteur",
-					value: `${message.author}`,
-				},
-				{
-					name: "Date",
-					value: `${message.createdAt}`,
-				}],
-				timestamp: new Date(),
-				footer: {
-					text: "© Ikaros, Hentai Univers"
-				}
-			}
-		})
+		embed.addField("Auteur:", `${message.author}`);
+		embed.addField("Date:", `${message.createdAt}`);
+		logs_channel.send(embed);
 	});
 };
 	getNewUser(client){
 	client.on('guildMemberAdd', membre => {
 		const logs_channel = membre.guild.channels.find('name', 'logs');
-		logs_channel.send({
-			embed :{
-				color : 0x50f0b0,
-				fields :[{
-					name: "Log - Nouveau Membre",
-					value: `Le membre ${membre} a rejoint le serveur`,
-				}],
-				timestamp: new Date(),
-				footer: {
-					text: "© Ikaros, Hentai Univers"
-				}
-			}
-		})
+		let embed = new Discord.RichEmbed()
+		.setColor(0x50f0b0)
+		.addField("Log - Nouveau membre", `Le membre ${membre} a rejoint le serveur`)
+		.setTimestamp()
+		.setFooter("© Ikaros, Hentai Univers");
+		logs_channel.send(embed);
 	});
 };
 	userLeave(client){
 	client.on('guildMemberRemove', membre =>{
 		const logs_channel = membre.guild.channels.find('name', 'logs');
-		logs_channel.send({
-			embed :{
-				color : 0x50f0b0,
-				fields :[{
-					name: "Log - Membre Parti",
-					value: `Le membre ${membre} a quitté le serveur`,
-				}],
-				timestamp: new Date(),
-				footer: {
-					text: "© Ikaros, Hentai Univers"
-				}
-			}
-		})
+		let embed = new Discord.RichEmbed()
+		.setColor(0x50f0b0)
+		.addField("Log - Membre parti", `Le membre ${membre} a quitté le serveur`)
+		.setTimestamp()
+		.setFooter("© Ikaros, Hentai Univers");
+		logs_channel.send(embed);
 	});
 };
 	getNewRole(client){
 	client.on('roleCreate', role => {
 		const logs_channel = role.guild.channels.find('name', 'logs');
-		logs_channel.send({
-			embed :{
-				color : 0x50f0b0,
-				fields :[{
-					name: "Log - Création Role",
-					value: `Le role ${role} a été créé.`,
-				}],
-				timestamp: new Date(),
-				footer: {
-					text: "© Ikaros, Hentai Univers"
-				}
-			}
-		})
+		let embed = new Discord.RichEmbed()
+		.setColor(0x50f0b0)
+		.addField("Log - Nouveau role", `Le role ${role} a été créé.`)
+		.setTimestamp()
+		.setFooter("© Ikaros, Hentai Univers");
+		logs_channel.send(embed);
 	});
 };
 	getDeleteRole(client) {
 		client.on('roleDelete', role => {
-			const logs_channel = role.guild.channels.find('name', 'logs');
-			logs_channel.send({
-				embed :{
-					color : 0x50f0b0,
-					fields :[{
-						name: "Log - Suppression Role",
-						value: `Le role ${role} a été supprimé.`,
-					}],
-					timestamp: new Date(),
-					footer: {
-						text: "© Ikaros, Hentai Univers"
-					}
-				}
-			})
+		const logs_channel = role.guild.channels.find('name', 'logs');
+		let embed = new Discord.RichEmbed()
+		.setColor(0x50f0b0)
+		.addField("Log - Suppression role", `Le role ${role} a été supprimé.`)
+		.setTimestamp()
+		.setFooter("© Ikaros, Hentai Univers");
+		logs_channel.send(embed);
 	});
 };
 	getMemberUpdate(client){
@@ -159,37 +120,23 @@ Si tu as 16 ans.`);
 	userBan(client){
 	client.on('guildBanAdd', function(guild, user){
 		const logs_channel = guild.channels.find('name', 'logs');
-		logs_channel.send({
-			embed :{
-				color : 0x50f0b0,
-				fields :[{
-					name: "Log - Membre Banni",
-					value: `Le membre ${user} a été banni du serveur`,
-				}],
-				timestamp: new Date(),
-				footer: {
-					text: "© Ikaros, Hentai Univers"
-				}
-			}
-		})
+		let embed = new Discord.RichEmbed()
+		.setColor(0x50f0b0)
+		.addField("Log - Membre banni", `Le membre ${user} a été banni du serveur`)
+		.setTimestamp()
+		.setFooter("© Ikaros, Hentai Univers");
+		logs_channel.send(embed);
 	})
 };
 	userUnban(client){
 	client.on('guildBanRemove', function(guild, user){
 		const logs_channel = guild.channels.find('name', 'logs');
-		logs_channel.send({
-			embed :{
-				color : 0x50f0b0,
-				fields :[{
-					name: "Log - Membre Débanni",
-					value: `Le membre ${user} a été débanni du serveur`,
-				}],
-				timestamp: new Date(),
-				footer: {
-					text: "© Ikaros, Hentai Univers"
-				}
-			}
-		})
+		let embed = new Discord.RichEmbed()
+		.setColor(0x50f0b0)
+		.addField("Log - Membre débanni", `Le membre ${user} a été débanni du serveur`)
+		.setTimestamp()
+		.setFooter("© Ikaros, Hentai Univers");
+		logs_channel.send(embed);
 	})
 };
 	mentionMessage(client){
@@ -198,6 +145,8 @@ Si tu as 16 ans.`);
 				ft_get_image(message, "OBJECTION");
 			else if (message.content.includes("EXPLOSION") == true)
 				ft_get_image(message, "EXPLOSION");
+			else if (message.content.includes("SION") == true)
+				ft_get_image(message, "SION");
 			else if (message.content.includes("Amwa") == true || message.content.includes("amwa") == true || message.content.includes("AMWA") == true)
 				ft_get_image(message, "AMWA");
 			else if (message.content.includes("JARIV") == true || message.content.includes("Jariv") == true || message.content.includes("jariv") == true)
@@ -231,19 +180,12 @@ Si tu as 16 ans.`);
 function memberGetRole(oldRole, newRole, Member, logs_channel){
 	for (let i = 0; i < newRole.length; i++){
 		if (oldRole[i] != newRole[i]){
-			logs_channel.send({
-				embed :{
-					color : 0x50f0b0,
-					fields :[{
-						name: "Log - Role obtenu",
-						value: `Le membre ${Member} a obtenu le role ${newRole[i]}.`,
-					}],
-					timestamp: new Date(),
-					footer: {
-						text: "© Ikaros, Hentai Univers"
-					}
-				}
-			})
+			let embed = new Discord.RichEmbed()
+			.setColor(0x50f0b0)
+			.addField("Log - Role obtenu", `Le membre ${Member} a obtenu le role ${newRole[i]}.`)
+			.setTimestamp()
+			.setFooter("© Ikaros, Hentai Univers");
+			logs_channel.send(embed);
 			return ;
 		}
 	}
@@ -252,19 +194,12 @@ function memberGetRole(oldRole, newRole, Member, logs_channel){
 function memberRemoveRole(oldRole, newRole, Member, logs_channel){
 	for (let i = 0; i < oldRole.length; i++){
 		if (oldRole[i] != newRole[i]){
-			logs_channel.send({
-				embed :{
-					color : 0x50f0b0,
-					fields :[{
-						name: "Log - Role retiré",
-						value: `Le membre ${Member} n'a plus le role ${oldRole[i]}.`,
-					}],
-					timestamp: new Date(),
-					footer: {
-						text: "© Ikaros, Hentai Univers"
-					}
-				}
-			})
+			let embed = new Discord.RichEmbed()
+			.setColor(0x50f0b0)
+			.addField("Log - Role retiré", `Le membre ${Member} n'a plus le role ${oldRole[i]}.`)
+			.setTimestamp()
+			.setFooter("© Ikaros, Hentai Univers");
+			logs_channel.send(embed);
 			return ;
 		}
 	}
@@ -321,9 +256,10 @@ async function is_monika(msg){
 	if (monika_channel == undefined)
 		return ;
 	let monika_message = await monika_channel.fetchMessages({limit: 1});
+	monika_message = monika_message.array()[0];
 	monika_message = monika_message.attachments.array();
 	const monika_embed = new Discord.RichEmbed()
-	.setTitle("Reste avec moi. Je ne veux pas que tu me quittes")
+	.setTitle("Tu es venu t'amuser avec moi ?")
 	.setColor(0xE70AC8)
 	.setImage(monika_message[0].url)
 	msg.channel.send(monika_embed);

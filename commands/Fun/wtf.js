@@ -67,9 +67,10 @@ async function is_monika(msg){
 	if (monika_channel == undefined)
 		return ;
 	let monika_message = await monika_channel.fetchMessages({limit: 1});
+	monika_message = monika_message.array()[0];
 	monika_message = monika_message.attachments.array();
 	const monika_embed = new Discord.RichEmbed()
-	.setTitle("Reste avec moi. Je ne veux pas que tu me quittes")
+	.setTitle("Tu es venu t'amuser avec moi ?")
 	.setColor(0xE70AC8)
 	.setImage(monika_message[0].url)
 	msg.channel.send(monika_embed);

@@ -28,9 +28,9 @@ module.exports = class Ban extends commando.Command {
  	}
 
 	async run(msg, args){
-		if (!(msg.content.startsWith("?")))
+		if (!(msg.content.startsWith("?ban")))
 			return ;
-		if (checkPerm(msg, "Mastermodo") == 0 && checkPerm(msg, "Supermodo") == 0 && checkPerm(msg, "Modo") == 0){
+		if (!msg.member.permissions.has("BAN_MEMBERS")){
 			msg.reply("Vous n'êtes pas autorisé a éxécuter cette commande");
 			return ;
 		}
@@ -90,6 +90,7 @@ module.exports = class Ban extends commando.Command {
 					}
 				}
 			}
+
 			const is_member = msg.guild.members.exists('user', args.member);
 			if (is_member == true){
 				await args.member.send(embedMessageUser);
@@ -98,7 +99,8 @@ module.exports = class Ban extends commando.Command {
 			msg.channel.send(embedMessageStaff)
 
 		}catch (err){
-			msg.reply(`L'utilisateur ${args.member} n\'a pas été banni du serveur`)
+			msg.reply(`L'utilisateur ${args.member} n\'a pas été banni du serveur`);
+			console.log(err);
 		}
 	}
 }

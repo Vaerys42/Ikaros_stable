@@ -15,7 +15,7 @@ module.exports = class Warn extends commando.Command {
 					key: 'member',
 					prompt: 'The user wich will be warn.',
 					type: 'user',
-					default: '<@390451747027681300>'
+					default: '<@393898001577410561>'
 				},
 				{
 					key: 'num',
@@ -39,7 +39,7 @@ module.exports = class Warn extends commando.Command {
 			msg.reply("Nous n'avez pas l'autorisation pour executer cette commande.");
 			return ;
 		}
-		if (args.member.id == 390451747027681300)
+		if (args.member.id == 393898001577410561)
 		{
 			msg.channel.send("Vous voulez me unwarn ? Avais-je déja fait une bêtise ?\n");
 			return ;

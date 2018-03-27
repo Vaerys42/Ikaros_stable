@@ -84,16 +84,17 @@ module.exports = class Tentacle extends commando.Command {
 async function is_monika(msg){
 	let bot = msg.guild.members.find('id', '393898001577410561');
 	bot = bot.user;
-	if (bot.username != "Monika")
+	if (bot.username != "Ikaros_Vae")
 		return (0);
 	const img_server = msg.client.guilds.find('name', 'ikaros-dev');
 	const monika_channel = img_server.channels.find('name', 'monika');
 	if (monika_channel == undefined)
 		return ;
 	let monika_message = await monika_channel.fetchMessages({limit: 1});
+	monika_message = monika_message.array()[0];
 	monika_message = monika_message.attachments.array();
 	const monika_embed = new Discord.RichEmbed()
-	.setTitle("Reste avec moi. Je ne veux pas que tu me quittes")
+	.setTitle("Tu es venu t'amuser avec moi ?")
 	.setColor(0xE70AC8)
 	.setImage(monika_message[0].url)
 	msg.channel.send(monika_embed);
