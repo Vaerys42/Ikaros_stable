@@ -70,7 +70,7 @@ module.exports = class getImage extends commando.Command{
 			})
 			return ;
 		}
-		let bot = msg.guild.members.find('id', '393898001577410561');
+		let bot = msg.guild.members.find('id', '418151600297607188');
 		if (bot != null){
 			bot = bot.user;
 			if (bot.username == "Monika"){

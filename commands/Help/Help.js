@@ -42,7 +42,7 @@ module.exports = class Help extends commando.Command {
 
 				if (args.module === 'Admin') {
 
-					if (checkPerm(msg, "Mastermodo") == 0 && checkPerm(msg, "Supermodo") == 0 && checkPerm(msg, "Modo") == 0 && checkPerm(msg, "Modo étagères <3") == 0){
+					if (checkPerm(msg, "Administrateur") == 0 && checkPerm(msg, "Soubrette") == 0 && checkPerm(msg, "Supermodo") == 0 && checkPerm(msg, "Modo") == 0){
 
 						msg.reply("Vous n'avez pas acces à ce module.");
 						return;
@@ -69,7 +69,7 @@ module.exports = class Help extends commando.Command {
 								title: "Module Admin",
 								description: `Liste des commandes du module admin : ${admin_list}`,
 								footer: {
-									text: "© Ikaros, Hentai Univers"
+									text: "© Ikaros, L'Antre de la Succube"
 								}
 							}
 						})
@@ -97,7 +97,7 @@ module.exports = class Help extends commando.Command {
 								title: `Module ${args.module}`,
 								description: `Liste des commandes du module ${args.module} : ${module_list}`,
 								footer: {
-									text: "© Ikaros, Hentai Univers"
+									text: "© Ikaros, L'Antre de la Succube"
 								}
 							}
 						})
@@ -107,7 +107,7 @@ module.exports = class Help extends commando.Command {
 				}
 			}else {
 				let all_module = "";
-				if (checkPerm(msg, "Mastermodo") == 0 && checkPerm(msg, "Supermodo") == 0 && checkPerm(msg, "Modo") == 0 && checkPerm(msg, "Modo étagères <3") == 0){
+				if (checkPerm(msg, "Administrateur") == 0 && checkPerm(msg, "Soubrette") == 0 && checkPerm(msg, "Supermodo") == 0 && checkPerm(msg, "Modo") == 0){
 					//Je montre les modules autorisés aux membres.
 						client.registry.groups.forEach(function(value, key, map) {
 							if (value.name != 'Admin') {
@@ -125,7 +125,7 @@ module.exports = class Help extends commando.Command {
 								title: "Liste des modules:",
 								description: `Voici tous les modules disponibles sur le serveur : ${all_module}\n Il suffit de faire ?help <module> pour accèder aux particularités de chaque module.\n`,
 								footer: {
-									text: "© Ikaros, Hentai Univers"
+									text: "© Ikaros, L'Antre de la Succube"
 								}
 							}
 						})
@@ -145,7 +145,7 @@ module.exports = class Help extends commando.Command {
 								title: "Liste des modules:",
 								description: `Voici tous les modules disponibles sur le serveur : ${all_module}\n Il suffit de faire ?help <module> pour accèder aux particularités de chaque module.\n`,
 								footer: {
-									text: "© Ikaros, Hentai Univers"
+									text: "© Ikaros, L'Antre de la Succube"
 								}
 							}
 						})
@@ -184,7 +184,7 @@ function help_command(msg, args, module)
 			title: `Aide de la commande: ${command_name}`,
 			description: "`" + `${command.description}\n` + "`" + "\n\nDétails: " + `${command.details}`,
 			footer: {
-				text: "© Ikaros, Hentai Univers"
+				text: "© Ikaros, L'Antre de la Succube"
 			}
 		}
 	})

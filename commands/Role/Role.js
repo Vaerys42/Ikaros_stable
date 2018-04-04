@@ -44,7 +44,7 @@ module.exports = class Role extends commando.Command {
 				return ;
 			}
 			else if (args.property == "add"){
-				if (checkPerm(msg, "Mastermodo") == 0 && checkPerm(msg, "Supermodo") == 0 && checkPerm(msg, "Modo") == 0){
+				if (checkPerm(msg, "Administrateur") == 0 && checkPerm(msg, "Soubrette") == 0 && checkPerm(msg, "Supermodo") == 0 && checkPerm(msg, "Modo") == 0){
 					msg.reply("Vous n'êtes pas autorisé a éxécuter cette commande");
 					return ;
 				}
@@ -52,7 +52,7 @@ module.exports = class Role extends commando.Command {
 				return ;
 			}
 			else if (args.property == "delete"){
-				if (checkPerm(msg, "Mastermodo") == 0 && checkPerm(msg, "Supermodo") == 0 && checkPerm(msg, "Modo") == 0){
+				if (checkPerm(msg, "Administrateur") == 0 && checkPerm(msg, "Soubrette") == 0 && checkPerm(msg, "Supermodo") == 0 && checkPerm(msg, "Modo") == 0){
 					msg.reply("Vous n'êtes pas autorisé a éxécuter cette commande");
 					return ;
 				}
@@ -77,7 +77,7 @@ module.exports = class Role extends commando.Command {
 
 function errorMessage(msg, args){
 
-	if (checkPerm(msg, "Mastermodo") == 1 || checkPerm(msg, "Supermodo") == 1 || checkPerm(msg, "Modo") == 1){
+	if (checkPerm(msg, "Administrateur") == 1 || checkPerm(msg, "Soubrette") == 0 || checkPerm(msg, "Supermodo") == 1 || checkPerm(msg, "Modo") == 1){
 		msg.channel.send({
 			embed: {
 				color: 0x50f0b0,

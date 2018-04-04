@@ -29,7 +29,7 @@ module.exports = class purge extends commando.Command {
 		}
 		if (!(msg.content.startsWith("?purge")))
 			return ;
-		if (checkPerm(msg, "Mastermodo") == 0 && checkPerm(msg, "Supermodo") == 0 && checkPerm(msg, "Modo") == 0){
+		if (checkPerm(msg, "Administrateur") == 0 && checkPerm(msg, "Soubrette") == 0 && checkPerm(msg, "Supermodo") == 0 && checkPerm(msg, "Modo") == 0){
 			msg.reply("Vous n'avez pas la permission d'utiliser cette commande");
 			return ;
         }

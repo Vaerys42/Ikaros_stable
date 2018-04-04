@@ -23,7 +23,7 @@ module.exports = class EventHandler {
 
 				const command = '```?age 16```'
 				channel.send(
-					`Bonjour <@${member.id}> et bienvenue sur le serveur Hentai Univers !
+					`Bonjour <@${member.id}> et bienvenue sur le serveur L'Antre de la Succube !
 Je t'invite a nous indiquer ton age avec la commande suivante avant de recevoir plus d'informations.
 Exemple :
 ${command}
@@ -40,7 +40,7 @@ Si tu as 16 ans.`);
 		.setTitle("Log - Message supprimé")
 		.setColor(0x50f0b0)
 		.addField("Channel:", `Message supprimé dans ${message.channel}`)
-		.setFooter("© Ikaros, Hentai Univers")
+		.setFooter("© Ikaros, L'Antre de la Succube")
 		.setTimestamp();
 		if (message.content.length != 0)
 			embed.addField("Message:", `${message.content}`);
@@ -62,7 +62,7 @@ Si tu as 16 ans.`);
 		.setColor(0x50f0b0)
 		.addField("Log - Nouveau membre", `Le membre ${membre} a rejoint le serveur`)
 		.setTimestamp()
-		.setFooter("© Ikaros, Hentai Univers");
+		.setFooter("© Ikaros, L'Antre de la Succube");
 		logs_channel.send(embed);
 	});
 };
@@ -73,7 +73,7 @@ Si tu as 16 ans.`);
 		.setColor(0x50f0b0)
 		.addField("Log - Membre parti", `Le membre ${membre} a quitté le serveur`)
 		.setTimestamp()
-		.setFooter("© Ikaros, Hentai Univers");
+		.setFooter("© Ikaros, L'Antre de la Succube");
 		logs_channel.send(embed);
 	});
 };
@@ -84,7 +84,7 @@ Si tu as 16 ans.`);
 		.setColor(0x50f0b0)
 		.addField("Log - Nouveau role", `Le role ${role} a été créé.`)
 		.setTimestamp()
-		.setFooter("© Ikaros, Hentai Univers");
+		.setFooter("© Ikaros, L'Antre de la Succube");
 		logs_channel.send(embed);
 	});
 };
@@ -95,7 +95,7 @@ Si tu as 16 ans.`);
 		.setColor(0x50f0b0)
 		.addField("Log - Suppression role", `Le role ${role} a été supprimé.`)
 		.setTimestamp()
-		.setFooter("© Ikaros, Hentai Univers");
+		.setFooter("© Ikaros, L'Antre de la Succube");
 		logs_channel.send(embed);
 	});
 };
@@ -124,7 +124,7 @@ Si tu as 16 ans.`);
 		.setColor(0x50f0b0)
 		.addField("Log - Membre banni", `Le membre ${user} a été banni du serveur`)
 		.setTimestamp()
-		.setFooter("© Ikaros, Hentai Univers");
+		.setFooter("© Ikaros, L'Antre de la Succube");
 		logs_channel.send(embed);
 	})
 };
@@ -135,7 +135,7 @@ Si tu as 16 ans.`);
 		.setColor(0x50f0b0)
 		.addField("Log - Membre débanni", `Le membre ${user} a été débanni du serveur`)
 		.setTimestamp()
-		.setFooter("© Ikaros, Hentai Univers");
+		.setFooter("© Ikaros, L'Antre de la Succube");
 		logs_channel.send(embed);
 	})
 };
@@ -184,7 +184,7 @@ function memberGetRole(oldRole, newRole, Member, logs_channel){
 			.setColor(0x50f0b0)
 			.addField("Log - Role obtenu", `Le membre ${Member} a obtenu le role ${newRole[i]}.`)
 			.setTimestamp()
-			.setFooter("© Ikaros, Hentai Univers");
+			.setFooter("© Ikaros, L'Antre de la Succube");
 			logs_channel.send(embed);
 			return ;
 		}
@@ -198,7 +198,7 @@ function memberRemoveRole(oldRole, newRole, Member, logs_channel){
 			.setColor(0x50f0b0)
 			.addField("Log - Role retiré", `Le membre ${Member} n'a plus le role ${oldRole[i]}.`)
 			.setTimestamp()
-			.setFooter("© Ikaros, Hentai Univers");
+			.setFooter("© Ikaros, L'Antre de la Succube");
 			logs_channel.send(embed);
 			return ;
 		}
@@ -238,7 +238,7 @@ async function ft_get_image(message, type){
 
 async function ft_mention(message, ment, name)
 {
-	let ika = ment.find('id', `393898001577410561`);
+	let ika = ment.find('id', `418151600297607188`);
 	if (ika != null){
 		if (await is_monika(message) == 1)
 			return ;
@@ -247,7 +247,7 @@ async function ft_mention(message, ment, name)
 }
 
 async function is_monika(msg){
-	let bot = msg.guild.members.find('id', '393898001577410561');
+	let bot = msg.guild.members.find('id', '418151600297607188');
 	bot = bot.user;
 	if (bot.username != "Monika")
 		return (0);

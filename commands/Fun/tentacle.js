@@ -82,7 +82,7 @@ module.exports = class Tentacle extends commando.Command {
 }
 
 async function is_monika(msg){
-	let bot = msg.guild.members.find('id', '393898001577410561');
+	let bot = msg.guild.members.find('id', '418151600297607188s');
 	bot = bot.user;
 	if (bot.username != "Ikaros_Vae")
 		return (0);

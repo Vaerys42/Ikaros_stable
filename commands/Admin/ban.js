@@ -15,7 +15,7 @@ module.exports = class Ban extends commando.Command {
 					key: 'member',
 					prompt: 'The user wich will be ban.',
 					type: 'user',
-					default: '<@393898001577410561>'
+					default: '<@418151600297607188>'
 				},
 				{
 					key: 'reason',
@@ -34,7 +34,7 @@ module.exports = class Ban extends commando.Command {
 			msg.reply("Vous n'êtes pas autorisé a éxécuter cette commande");
 			return ;
 		}
-		if (args.member.id == 393898001577410561)
+		if (args.member.id == 418151600297607188)
 		{
 			msg.channel.send("Vous voulez me ban ? Mais je ne suis pas comme Monika ?!\n");
 			return ;

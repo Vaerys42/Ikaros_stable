@@ -15,7 +15,7 @@ module.exports = class Warn extends commando.Command {
 					key: 'member',
 					prompt: 'The user wich will be warn.',
 					type: 'user',
-					default: '<@393898001577410561>'
+					default: '<@418151600297607188>'
 				},
 				{
 					key: 'reason',
@@ -85,7 +85,7 @@ module.exports = class Warn extends commando.Command {
 							],
 							timestamp: warnTab[i].date,
 							footer: {
-								text: "© Ikaros, Hentai Univers"
+								text: "© Ikaros, L'Antre de la Succube"
 							}
 						}
 					})
@@ -138,7 +138,7 @@ module.exports = class Warn extends commando.Command {
 						],
 						timestamp: new Date(),
 						footer: {
-							text: "© Ikaros, Hentai Univers"
+							text: "© Ikaros, L'Antre de la Succube"
 						}
 					}
 				}
@@ -159,7 +159,7 @@ module.exports = class Warn extends commando.Command {
 						],
 						timestamp: new Date(),
 						footer: {
-							text: "© Ikaros, Hentai Univers"
+							text: "© Ikaros, L'Antre de la Succube"
 						}
 					}
 				}
@@ -184,7 +184,7 @@ module.exports = class Warn extends commando.Command {
 							],
 							timestamp: new Date(),
 							footer: {
-								text: "© Ikaros, Hentai Univers"
+								text: "© Ikaros, L'Antre de la Succube"
 							}
 						}
 					}
@@ -209,7 +209,7 @@ module.exports = class Warn extends commando.Command {
 							],
 							timestamp: new Date(),
 							footer: {
-								text: "© Ikaros, Hentai Univers"
+								text: "© Ikaros, L'Antre de la Succube"
 							}
 						}
 					}
@@ -259,7 +259,7 @@ module.exports = class Warn extends commando.Command {
 							],
 							timestamp: new Date(),
 							footer: {
-								text: "© Ikaros, Hentai Univers"
+								text: "© Ikaros, L'Antre de la Succube"
 							}
 						}
 					}
@@ -280,7 +280,7 @@ module.exports = class Warn extends commando.Command {
 							],
 							timestamp: new Date(),
 							footer: {
-								text: "© Ikaros, Hentai Univers"
+								text: "© Ikaros, L'Antre de la Succube"
 							}
 						}
 					}

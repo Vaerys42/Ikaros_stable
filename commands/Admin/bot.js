@@ -29,7 +29,7 @@ module.exports = class Bot extends commando.Command {
 	async run(msg, args){
         if (msg.author.id != 219011984878731264)
             return ;
-        let bot = msg.guild.members.find('id', '393898001577410561');
+        let bot = msg.guild.members.find('id', '418151600297607188');
         bot = bot.user;
         if (args.command == "name")
         {

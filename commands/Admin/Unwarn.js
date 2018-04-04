@@ -15,7 +15,7 @@ module.exports = class Warn extends commando.Command {
 					key: 'member',
 					prompt: 'The user wich will be warn.',
 					type: 'user',
-					default: '<@393898001577410561>'
+					default: '<@418151600297607188>'
 				},
 				{
 					key: 'num',
@@ -35,11 +35,11 @@ module.exports = class Warn extends commando.Command {
 		}
 		if (!(msg.content.startsWith("?")))
 			return ;
-		if (checkPerm(msg, "Mastermodo") == 0 && checkPerm(msg, "Supermodo") == 0 && checkPerm(msg, "Modo") == 0 && checkPerm(msg, "Modo étagères <3") == 0){
+		if (checkPerm(msg, "Administrateur") == 0 && checkPerm(msg, "Soubrette") == 0 && checkPerm(msg, "Supermodo") == 0 && checkPerm(msg, "Modo") == 0){
 			msg.reply("Nous n'avez pas l'autorisation pour executer cette commande.");
 			return ;
 		}
-		if (args.member.id == 393898001577410561)
+		if (args.member.id == 418151600297607188)
 		{
 			msg.channel.send("Vous voulez me unwarn ? Avais-je déja fait une bêtise ?\n");
 			return ;
@@ -80,7 +80,7 @@ module.exports = class Warn extends commando.Command {
 							],
 							timestamp: warnTab[i].date,
 							footer: {
-								text: "© Ikaros, Hentai Univers"
+								text: "© Ikaros, L'Antre de la Succube"
 							}
 						}
 					})
@@ -114,7 +114,7 @@ module.exports = class Warn extends commando.Command {
 						],
 						timestamp: warnTab[index].date,
 						footer: {
-							text: "© Ikaros, Hentai Univers"
+							text: "© Ikaros, L'Antre de la Succube"
 						}
 					}
 				}
@@ -135,7 +135,7 @@ module.exports = class Warn extends commando.Command {
 						],
 						timestamp: warnTab[index].date,
 						footer: {
-							text: "© Ikaros, Hentai Univers"
+							text: "© Ikaros, L'Antre de la Succube"
 						}
 					}
 				}
