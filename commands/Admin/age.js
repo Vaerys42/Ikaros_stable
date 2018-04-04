@@ -25,19 +25,18 @@ module.exports = class Age extends commando.Command {
 		}
 		if (msg.member.roles.find("name", "Membres") != undefined)
 		{
-			msg.reply("Te fous pas de la gueule des Nekos")
+			msg.reply("Vous avez déja le role membre");
 			return ;
 		}
 		if (checkAgeChar(args) == 1){
-			if (args <= 17){
-					msg.channel.send("Neko-Lulu pas contente, Neko pas accepter toi! Entrée au paradis refusée!");
-					msg.member.ban("Trop jeune");
-			}
-			else if (args >= 85)
+			if (args >= 85)
 				msg.reply("Désolée nous n'acceptons que les personnes en condition physique pour pouvoir se Fap, Next.");
-			else{
-				msg.channel.send(" Neko-Lulu contente, Neko accepter toi dans son monde!");
-				msg.member.addRole(msg.guild.roles.find("name", "Membres"));
+			else if (args >= 0 && args <= 84){
+				if (args <= 17)
+					msg.member.addRole(msg.guild.roles.find("name", "Membres SFW"));
+				else
+					msg.member.addRole(msg.guild.roles.find("name", "Membres"));
+				msg.channel.send("Bienvenue dans l'Antre de la Succube");
 				sendRules(msg);
 			}
 			}
