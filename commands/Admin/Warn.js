@@ -35,7 +35,7 @@ module.exports = class Warn extends commando.Command {
 		}
 		if (!(msg.content.startsWith("?warn")))
 			return ;
-		if (checkPerm(msg, "Mastermodo") == 0 && checkPerm(msg, "Supermodo") == 0 && checkPerm(msg, "Modo") == 0 && checkPerm(msg, "Modo étagères <3") == 0){
+		if (checkPerm(msg, "Administrateur") == 0 && checkPerm(msg, "Soubrette") && checkPerm(msg, "Supermodo") == 0 && checkPerm(msg, "Modo") == 0){
 			msg.reply("Vous n'avez pas la permission d'utiliser cette commande");
 			return ;
 		}
