@@ -15,9 +15,12 @@ module.exports = class Age extends commando.Command {
 					prompt: 'La personne que vous voulez caliner <3',
 					type: 'user',
 					default: '',
+					validate(val, msg){
+						console.log(val);
+						return (1);
+					}
                 }
-            ]
-            ,
+            ],
 		});
 	}
 
@@ -29,6 +32,8 @@ module.exports = class Age extends commando.Command {
 		}
 		if (!(msg.content.startsWith("?")))
 			return ;
+		if (args.member.length == 0)
+			args.member = msg.author;
         let url = args.member.avatarURL;
 		const embed = new Discord.RichEmbed()
 		.setColor(0xE70AC8)

@@ -20,8 +20,6 @@ module.exports = class Dory extends commando.Command {
 		}
 		if (!(msg.content.startsWith("?")))
 			return ;
-		if (await is_monika(msg) == 1)
-			return ;
 		let gif_server = msg.client.guilds.find('name', 'ikaros-dev');
 		if (gif_server == undefined){
 			msg.reply("Une erreur est survenue, veuillez contacter <@219011984878731264> merci");
@@ -58,9 +56,9 @@ module.exports = class Dory extends commando.Command {
 }
 
 async function is_monika(msg){
-	let bot = msg.guild.members.find('id', '418151600297607188');
+	let bot = msg.guild.members.find('id', '393898001577410561');
 	bot = bot.user;
-	if (bot.username != "Monika")
+	if (bot.username != "Ikaros_Vae")
 		return (0);
 	const img_server = msg.client.guilds.find('name', 'ikaros-dev');
 	const monika_channel = img_server.channels.find('name', 'monika');

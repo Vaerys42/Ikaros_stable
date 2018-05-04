@@ -34,8 +34,6 @@ module.exports = class Tentacle extends commando.Command {
 		}
 		if (!(msg.content.startsWith("?")))
 			return ;
-		if (await is_monika(msg) == 1)
-			return ;
 		let gif_server = msg.client.guilds.find('name', 'ikaros-dev');
 		if (gif_server == undefined){
 			msg.reply("Une erreur est survenue, veuillez contacter <@219011984878731264> merci");
@@ -72,7 +70,7 @@ module.exports = class Tentacle extends commando.Command {
 		if (args.member.length == 0)
 			str = `${msg.author} se fait dominer par ses tentacules`;
 		else
-			str = `${msg.author} envoie ses tentacules sur ${args.member}`;
+			str = `${msg.author} envoie ses tentacules sur <@350045593994919949>`;
 		const embed = new Discord.RichEmbed()
 		.setDescription(str)
 		.setColor(0xE70AC8)
@@ -82,7 +80,7 @@ module.exports = class Tentacle extends commando.Command {
 }
 
 async function is_monika(msg){
-	let bot = msg.guild.members.find('id', '418151600297607188s');
+	let bot = msg.guild.members.find('id', '418151600297607188');
 	bot = bot.user;
 	if (bot.username != "Ikaros_Vae")
 		return (0);
