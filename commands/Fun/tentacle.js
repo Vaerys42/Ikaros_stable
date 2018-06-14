@@ -70,7 +70,7 @@ module.exports = class Tentacle extends commando.Command {
 		if (args.member.length == 0)
 			str = `${msg.author} se fait dominer par ses tentacules`;
 		else
-			str = `${msg.author} envoie ses tentacules sur <@350045593994919949>`;
+			str = `${msg.author} envoie ses tentacules sur ${args.member}`;
 		const embed = new Discord.RichEmbed()
 		.setDescription(str)
 		.setColor(0xE70AC8)

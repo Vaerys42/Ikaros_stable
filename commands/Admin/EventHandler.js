@@ -27,7 +27,9 @@ module.exports = class EventHandler {
 Je t'invite a nous indiquer ton age avec la commande suivante avant de recevoir plus d'informations.
 Exemple :
 ${command}
-Si tu as 16 ans.`);
+Si tu as 16 ans.
+
+PS : Si tu es mineur, sois honnête, tu ne seras pas banni du serveur`);
 	});
 	}
 	getDeleteMessage(client) {
